@@ -71,7 +71,7 @@ export default class Login extends Component {
         leftText: '李辉'
       },
       onPress:this.gotoLogin.bind(this),
-      rightText: '退出',
+      rightText: '退出',
       type: type
     })
   }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { AppRegistry, StyleSheet, Text, View, Dimensions, Navigator, TouchableOpacity, Image } from 'react-native'
 import Badge from 'antd-mobile/lib/badge'
-import Login from './Login'
+import PlanQuery from '../business/PlanQuery'
 import Dot from './Dot'
 
 export default class Main extends Component {
@@ -9,8 +9,26 @@ export default class Main extends Component {
   }
 
   onPress() {
-    alert("我是Spike!");
+    this.gotoNext()
   }
+  gotoNext(type = 'Normal') {
+    this.props.navigator.push({
+      component: PlanQuery,
+      passProps: {
+        titleBaseHeight: 44,
+        titleColor: '#004cb0',
+        titleText: '审计计划',
+        leftText: '返回',
+      },
+      onPress: this.onQuery.bind(this),
+      rightText: '查询',
+      type: type
+    })
+  }
+  onQuery() {
+    console.log('query')
+  }
+
 
   render() {
     return (
@@ -26,7 +44,7 @@ export default class Main extends Component {
             <Image style={{ width: 54, height: 54 }} source={require('../../assets/img/审计预警.png')} />
             <Text style={styles.text}>审计预警</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={[styles.funcBox, { borderLeftWidth: 0, borderRightWidth: 0 }]}>
+          <TouchableOpacity style={[styles.funcBox, { borderLeftWidth: 0, borderRightWidth: 0 }]} onPress={this.onPress.bind(this)}>
             <Image style={{ width: 54, height: 54 }} source={require('../../assets/img/审计计划查询.png')} />
             <Text style={styles.text}>审计计划查询</Text>
           </TouchableOpacity>

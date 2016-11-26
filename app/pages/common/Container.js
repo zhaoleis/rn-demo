@@ -40,24 +40,21 @@ export default class Container extends Component {
     const { titleBaseHeight, titleColor, titleText } = this.state
     const NavigationBarRouteMapper = {
       LeftButton(route, navigator, index, navState) {
-        if (index > 0) {
-          return (
-            <View style={styles.navContainer}>
-              <TouchableOpacity underlayColor='transparent' >
-                <Text style={styles.leftNavButtonText}>{route.passProps.leftText}</Text>
-              </TouchableOpacity>
-            </View>
-          );
-        } else {
-          return null
-        }
+        const left = route.passProps.leftText === '返回' ? <Image style={styles.leftNavButton} source={require('../../assets/img/返回.png')} /> : <Text style={styles.leftNavButtonText}>{route.passProps.leftText}</Text>
+        return (
+          <View style={styles.navContainer}>
+            <TouchableOpacity onPress={() => { if (route.passProps.leftText === '返回') navigator.pop() } }>
+              {left}
+            </TouchableOpacity>
+          </View>
+        )
       },
       RightButton(route, navigator, index, navState) {
         if (route.onPress) {
-          const right = route.rightText === '退出' ? <Image style={styles.rightNavButton} source={require('../../assets/img/注销.png')} /> : <Text style={styles.rightNavButtonText}>{route.rightText}</Text>
+          const right = route.rightText === '退出' ? <Image style={styles.rightNavButton} source={require('../../assets/img/注销.png')} /> : <Text style={styles.rightNavButtonText}>{route.rightText}</Text>
           return (
             <View style={styles.navContainer}>
-              <TouchableOpacity onPress={() => route.onPress()}>
+              <TouchableOpacity onPress={() => { if (route.rightText === '退出') navigator.pop() } }>
                 {right}
               </TouchableOpacity>
             </View>
@@ -120,10 +117,20 @@ var styles = StyleSheet.create({
     fontSize: 18,
     marginLeft: 13
   },
+  leftNavButton: {
+    marginLeft: 13,
+    width: 22,
+    height: 22
+  },
   rightNavButton: {
     marginRight: 13,
     width: 22,
     height: 22
+  },
+  rightNavButtonText: {
+    color: '#ffffff',
+    fontSize: 18,
+    marginRight: 13
   },
   title: {
     fontSize: 18,
