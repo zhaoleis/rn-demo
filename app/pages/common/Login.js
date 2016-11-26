@@ -151,7 +151,6 @@ var styles = StyleSheet.create({
   txtBox: {
     height: 40,
     borderColor: 'transparent',
-    borderBottomWidth: 1,
     marginBottom: 10,
     flexDirection: 'row',
     justifyContent: 'flex-start',

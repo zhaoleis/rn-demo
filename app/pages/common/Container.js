@@ -1,5 +1,5 @@
 import React, { Component, Platform } from 'react'
-import { StyleSheet, Text, View, Dimensions, Navigator, TouchableOpacity, StatusBar } from 'react-native'
+import { StyleSheet, Text, View, Dimensions, Navigator, TouchableOpacity, StatusBar, Image } from 'react-native'
 import Welcome from './Welcome'
 
 export default class Container extends Component {
@@ -53,17 +53,16 @@ export default class Container extends Component {
         }
       },
       RightButton(route, navigator, index, navState) {
-        if (route.onPress)
+        if (route.onPress) {
+          const right = route.rightText === '退出' ? <Image style={styles.rightNavButton} source={require('../../assets/img/注销.png')} /> : <Text style={styles.rightNavButtonText}>{route.rightText}</Text>
           return (
             <View style={styles.navContainer}>
-              <TouchableOpacity
-                onPress={() => route.onPress()}>
-                <Text style={styles.rightNavButtonText}>
-                  {route.rightText}
-                </Text>
+              <TouchableOpacity onPress={() => route.onPress()}>
+                {right}
               </TouchableOpacity>
             </View>
           )
+        }
       },
       Title(route, navigator, index, navState) {
         return (
@@ -121,10 +120,10 @@ var styles = StyleSheet.create({
     fontSize: 18,
     marginLeft: 13
   },
-  rightNavButtonText: {
-    color: '#ffffff',
-    fontSize: 18,
-    marginRight: 13
+  rightNavButton: {
+    marginRight: 13,
+    width: 22,
+    height: 22
   },
   title: {
     fontSize: 18,
