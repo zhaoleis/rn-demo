@@ -27,8 +27,8 @@ export default class Container extends Component {
   configureScene(route, routeStack) {
     if (route.type == 'Modal') {
       return Navigator.SceneConfigs.FloatFromBottom
-    } 
-    else if(route.type == 'Exit'){
+    }
+    else if (route.type == 'Exit') {
       return Navigator.SceneConfigs.PushFromLeft
     }
     else {
@@ -43,9 +43,7 @@ export default class Container extends Component {
         if (index > 0) {
           return (
             <View style={styles.navContainer}>
-              <TouchableOpacity
-                underlayColor='transparent'
-                onPress={() => { if (index > 0) { navigator.pop() } } }>
+              <TouchableOpacity underlayColor='transparent' >
                 <Text style={styles.leftNavButtonText}>{route.passProps.leftText}</Text>
               </TouchableOpacity>
             </View>
