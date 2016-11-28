@@ -40,7 +40,7 @@ export default class Container extends Component {
     const { titleBaseHeight, titleColor, titleText } = this.state
     const NavigationBarRouteMapper = {
       LeftButton(route, navigator, index, navState) {
-        const left = route.passProps.leftText === '返回' ? <Image style={styles.leftNavButton} source={require('../../assets/img/返回.png')} /> : <Text style={styles.leftNavButtonText}>{route.passProps.leftText}</Text>
+        const left = route.passProps.leftText === '返回' ? <Image style={styles.leftNavButton} source={require('../../assets/img/return.png')} /> : <Text style={styles.leftNavButtonText}>{route.passProps.leftText}</Text>
         return (
           <View style={styles.navContainer}>
             <TouchableOpacity onPress={() => { if (route.passProps.leftText === '返回') navigator.pop() } }>
@@ -51,7 +51,14 @@ export default class Container extends Component {
       },
       RightButton(route, navigator, index, navState) {
         if (route.onPress) {
-          const right = route.rightText === '退出' ? <Image style={styles.rightNavButton} source={require('../../assets/img/注销.png')} /> : <Text style={styles.rightNavButtonText}>{route.rightText}</Text>
+          const right = null
+          if (route.rightText === '退出') {
+            right = <Image style={styles.rightNavButton} source={require('../../assets/img/logout.png')} />
+          } else if(route.rightText === '查询'){
+            right = <Image style={styles.rightNavButton} source={require('../../assets/img/search.png')} />
+          } else {
+            right = <Text style={styles.rightNavButtonText}>{route.rightText}</Text>
+          }
           return (
             <View style={styles.navContainer}>
               <TouchableOpacity onPress={() => { if (route.rightText === '退出') navigator.pop() } }>
@@ -119,8 +126,8 @@ var styles = StyleSheet.create({
   },
   leftNavButton: {
     marginLeft: 13,
-    width: 22,
-    height: 22
+    width: 18,
+    height: 18
   },
   rightNavButton: {
     marginRight: 13,
