@@ -41,7 +41,7 @@ export default class Welcome extends Component {
           CHINA COMMUNICATIONS CONSTRUCTION
         </Text>
         <Text style={styles.instructions}>
-          版权所有 © 2015-2016 中国交通建设
+          版权所有 © 2015-2016 xxxxxx
         </Text>
       </View>
     )

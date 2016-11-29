@@ -118,7 +118,7 @@ export default class Login extends Component {
             </WingBlank>
           </View>
           <Text style={styles.instructions}>
-            版权所有 © 2015-2016 中国交通建设
+            版权所有 © 2015-2016 XXXXX
         </Text>
         </View>
       </Image>
