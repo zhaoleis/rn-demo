@@ -1,17 +1,23 @@
 import React, { Component } from 'react'
-import { AppRegistry, StyleSheet, Text, View, Dimensions, Navigator, TouchableOpacity, Image, WingBlank } from 'react-native'
+import { AppRegistry, StyleSheet, Text, View, Dimensions, Navigator, TouchableOpacity, Image, WingBlank, NativeModules } from 'react-native'
+import Toast from 'antd-mobile/lib/toast'
+
 export default class PlanQuery extends Component {
   onPress() {
-    console.log('aaa')
+    NativeModules.IntentModule.startActivityFromJSGetResult("com.auditerp.SecondActivity","卧槽？", 200, (msg) => {
+      Toast.success(msg)
+    }, (result) => {
+      Toast.success(result)
+    })
   }
 
   render() {
     return (
       <View style={styles.container}>
         <View style={{ flexDirection: 'row', borderTopWidth: 1, borderBottomWidth: 1, borderColor: '#dcdcdc', }}>
-          <TouchableOpacity style={[styles.funcBox, { borderLeftWidth: 0 }]}>
-            <View style={{flexDirection: 'row',alignItems: 'center',}}>
-              <Image style={{ width: 19, height: 14,marginRight:5 }} source={require('../../assets/img/listicon.png')} />
+          <TouchableOpacity style={[styles.funcBox, { borderLeftWidth: 0 }]} onPress={this.onPress.bind(this)}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', }}>
+              <Image style={{ width: 19, height: 14, marginRight: 5 }} source={require('../../assets/img/listicon.png')} />
               <Text style={styles.text}>年度计划(发文)</Text>
             </View>
             <Image style={{ width: 12, height: 21 }} source={require('../../assets/img/enter.png')} />
@@ -19,8 +25,8 @@ export default class PlanQuery extends Component {
         </View>
         <View style={{ flexDirection: 'row', borderTopWidth: 0, borderBottomWidth: 1, borderColor: '#dcdcdc', }}>
           <TouchableOpacity style={[styles.funcBox, { borderLeftWidth: 0 }]}>
-            <View style={{flexDirection: 'row',alignItems: 'center',}}>
-              <Image style={{ width: 19, height: 14,marginRight:5 }} source={require('../../assets/img/listicon.png')} />
+            <View style={{ flexDirection: 'row', alignItems: 'center', }}>
+              <Image style={{ width: 19, height: 14, marginRight: 5 }} source={require('../../assets/img/listicon.png')} />
               <Text style={styles.text}>年度项目计划</Text>
             </View>
             <Image style={{ width: 12, height: 21 }} source={require('../../assets/img/enter.png')} />
@@ -28,8 +34,8 @@ export default class PlanQuery extends Component {
         </View>
         <View style={{ flexDirection: 'row', borderTopWidth: 0, borderBottomWidth: 1, borderColor: '#dcdcdc', }}>
           <TouchableOpacity style={[styles.funcBox, { borderLeftWidth: 0 }]}>
-            <View style={{flexDirection: 'row',alignItems: 'center',}}>
-              <Image style={{ width: 19, height: 14,marginRight:5 }} source={require('../../assets/img/listicon.png')} />
+            <View style={{ flexDirection: 'row', alignItems: 'center', }}>
+              <Image style={{ width: 19, height: 14, marginRight: 5 }} source={require('../../assets/img/listicon.png')} />
               <Text style={styles.text}>一季度</Text>
             </View>
             <Image style={{ width: 12, height: 21 }} source={require('../../assets/img/enter.png')} />
@@ -37,8 +43,8 @@ export default class PlanQuery extends Component {
         </View>
         <View style={{ flexDirection: 'row', borderTopWidth: 0, borderBottomWidth: 1, borderColor: '#dcdcdc', }}>
           <TouchableOpacity style={[styles.funcBox, { borderLeftWidth: 0 }]}>
-            <View style={{flexDirection: 'row',alignItems: 'center',}}>
-              <Image style={{ width: 19, height: 14,marginRight:5 }} source={require('../../assets/img/listicon.png')} />
+            <View style={{ flexDirection: 'row', alignItems: 'center', }}>
+              <Image style={{ width: 19, height: 14, marginRight: 5 }} source={require('../../assets/img/listicon.png')} />
               <Text style={styles.text}>二季度</Text>
             </View>
             <Image style={{ width: 12, height: 21 }} source={require('../../assets/img/enter.png')} />
@@ -46,8 +52,8 @@ export default class PlanQuery extends Component {
         </View>
         <View style={{ flexDirection: 'row', borderTopWidth: 0, borderBottomWidth: 1, borderColor: '#dcdcdc', }}>
           <TouchableOpacity style={[styles.funcBox, { borderLeftWidth: 0 }]}>
-            <View style={{flexDirection: 'row',alignItems: 'center',}}>
-              <Image style={{ width: 19, height: 14,marginRight:5 }} source={require('../../assets/img/listicon.png')} />
+            <View style={{ flexDirection: 'row', alignItems: 'center', }}>
+              <Image style={{ width: 19, height: 14, marginRight: 5 }} source={require('../../assets/img/listicon.png')} />
               <Text style={styles.text}>三季度</Text>
             </View>
             <Image style={{ width: 12, height: 21 }} source={require('../../assets/img/enter.png')} />
@@ -55,8 +61,8 @@ export default class PlanQuery extends Component {
         </View>
         <View style={{ flexDirection: 'row', borderTopWidth: 0, borderBottomWidth: 1, borderColor: '#dcdcdc', }}>
           <TouchableOpacity style={[styles.funcBox, { borderLeftWidth: 0 }]}>
-            <View style={{flexDirection: 'row',alignItems: 'center',}}>
-              <Image style={{ width: 19, height: 14,marginRight:5 }} source={require('../../assets/img/listicon.png')} />
+            <View style={{ flexDirection: 'row', alignItems: 'center', }}>
+              <Image style={{ width: 19, height: 14, marginRight: 5 }} source={require('../../assets/img/listicon.png')} />
               <Text style={styles.text}>四季度</Text>
             </View>
             <Image style={{ width: 12, height: 21 }} source={require('../../assets/img/enter.png')} />
